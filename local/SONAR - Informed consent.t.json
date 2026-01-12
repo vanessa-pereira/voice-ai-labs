@@ -22,9 +22,9 @@
       "original_namespace" : "",
       "original_publisher" : "",
       "custodian_namespace" : "",
-      "sem_ver" : "0.1.0",
+      "sem_ver" : "0.2.0",
       "build_uid" : "",
-      "MD5-CAM-1.0.1" : "ceb30725635738c71c04a34fb33ca9e4",
+      "MD5-CAM-1.0.1" : "78ffb2a63dce7389b2be068e8d547ca7",
       "PARENT:MD5-CAM-1.0.1" : "3B0765A6B395C9D01595FDF2D440E6CB"
     },
     "details" : {
@@ -226,7 +226,39 @@
       "children" : [ {
         "@type" : "C_COMPLEX_OBJECT",
         "rmTypeName" : "EVENT_CONTEXT",
-        "attributes" : [ ],
+        "attributes" : [ {
+          "@type" : "C_ATTRIBUTE",
+          "rmAttributeName" : "other_context",
+          "children" : [ {
+            "@type" : "C_COMPLEX_OBJECT",
+            "rmTypeName" : "ITEM_TREE",
+            "nodeId" : "at0001",
+            "attributes" : [ {
+              "@type" : "C_ATTRIBUTE",
+              "rmAttributeName" : "items",
+              "children" : [ {
+                "@type" : "C_ARCHETYPE_ROOT",
+                "rmTypeName" : "CLUSTER",
+                "occurrences" : "0..1",
+                "nodeId" : "at0002.2",
+                "attributes" : [ ],
+                "attributeTuples" : [ ],
+                "archetypeRef" : "openEHR-EHR-CLUSTER.ovl-research_information-001.v0",
+                "referenceType" : "archetypeOverlay"
+              }, {
+                "@type" : "C_ARCHETYPE_ROOT",
+                "rmTypeName" : "CLUSTER",
+                "occurrences" : "0..1",
+                "nodeId" : "at0002.1",
+                "attributes" : [ ],
+                "attributeTuples" : [ ],
+                "archetypeRef" : "openEHR-EHR-CLUSTER.ovl-encounter_context-001.v0",
+                "referenceType" : "archetypeOverlay"
+              } ]
+            } ],
+            "attributeTuples" : [ ]
+          } ]
+        } ],
         "attributeTuples" : [ ]
       } ]
     }, {
@@ -419,7 +451,23 @@
       "otherDetails" : {
         "PARENT:MD5-CAM-1.0.1" : "FF99DB6B0BE1F42DD1D453D7F33D565D"
       },
-      "details" : { }
+      "details" : {
+        "en" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "en"
+          },
+          "purpose" : "To record information about follow-up for proposed additional care or escalation of care.",
+          "keywords" : [ ],
+          "use" : "Use to record information about follow-up for proposed additional care or escalation of care.\r\n\r\nThis archetype has been designed to support an investigation into appropriate health care provision, including maternity mortality surveillance.",
+          "copyright" : "© openEHR Foundation",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        }
+      }
     },
     "parentArchetypeId" : "openEHR-EHR-ADMIN_ENTRY.referral_review.v0",
     "differential" : true,
@@ -493,7 +541,114 @@
       "otherDetails" : {
         "PARENT:MD5-CAM-1.0.1" : "10166B307F40817B5B3E2D3720F6AC03"
       },
-      "details" : { }
+      "details" : {
+        "de" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "de"
+          },
+          "purpose" : "Zur Darstellung von Informationen zu einer Person, wie sie bekannt sind oder im Rahmen der klinischen Dokumentation verstanden werden.",
+          "keywords" : [ "Anbieter, Dienstleister, Betreuer, Personal, medizinisches Fachpersonal, Verwandter, Angehöriger, Hausarzt, Zeuge, Freund, Nachbar, Kind, Familie, Geschwister, Elternteil, Einzelperson" ],
+          "use" : "Der Archetyp wird verwendet, um Informationen zur einer Person darzustellen, wie sie bekannt sind oder im Rahmen der klinischen Dokumentation verstanden werden, oft ad hoc oder wenn die Verwendung von einem formellen demografischen Register oder einem Index nicht angemessen oder nicht möglich ist.\r\nBeispiele beinhalten:\r\n- der Inhaber einer Patientenverfügung unter Verwendung des SLOT „Inhaber der Kopie“ innerhalb des Archetyps EVALUATION.advance_care_directive;\r\n- die Rolle und Kontaktdaten eines benannten Ansprechpartners in einer Organisation, unter Verwendung des SLOT „Kontaktperson“ innerhalb des Archetyps CLUSTER.organisation;\r\n- Angaben zu einem Verwandten in einer Familienanamnese unter Verwendung des SLOT „Angaben zum Familienmitglied“ innerhalb des Archetyps openEHR-EHR-EVALUATION.family_history;\r\n- der Name der Person, die eine Laborprobe von einem Patienten entnommen hat, unter Verwendung der „Angaben zum Probennehmer“ innerhalb des Archetyps CLUSTER.specimen oder\r\n- ein Zeuge eines Sturzes oder Unfalls, unter Verwendung des SLOT \"Zeuge\" innerhalb des Archetyps CLUSTER.health_event.\r\n\r\nIn den meisten einfachen Anwendungsfällen reicht das unstrukturierte Element „Name“ innerhalb des Archetyps CLUSTER.person aus, um den Namen einer Person als Teil einer Gesundheitsakte darzustellen. In Fällen, in denen ein strukturierter Name für klinische Aufzeichnungszwecke erforderlich oder wünschenswert ist, verschachteln Sie diesen Archetyp jedoch im SLOT „Name strukturiert“ im Archetyp CLUSTER.person. Wenn der Archetyp CLUSTER.structured_name in den SLOT „Name strukturiert“ eingebettet ist, können beliebige oder alle Datenelemente als Textzeichenfolge kombiniert und im Element „Name“ dargestellt werden, solange sie konsistent sind.\r\n\r\nDieser Archetyp könnte auch stellvertretend für formale demografische Daten verwendet werden, wenn ein Template mit Domänenexperten überprüft wird – beispielsweise eine Bewertung, bei der Prüfer erwarten würden, dass die Details einer Person oben im Bewertungsformular angezeigt werden.",
+          "misuse" : "Der Archetyp darf nicht verwendet werden, um das formelle Identifikationsmanagement darzustellen oder zu ersetzen oder um ein offizielles demografisches Register oder einen Index zu führen. Verwenden Sie zu diesem Zweck einen formellen Master Patient Index oder Health Provider Index oder Archetypen, die auf dem demografischen Informationsmodell von openEHR basieren.\r\n\r\nDarf nicht verwendet werden, um den Patienten, die Teilnehmer oder den Verfasser der Akte und ähnliche Datenelemente darzustellen, die formal in der Patientenakte unter Verwendung der Referenzmodellattribute dargestellt werden sollten.\r\n\r\nDarf nicht verwendet werden, um das Geburtsdatum einer Person darzustellen – verwenden Sie zu diesem Zweck das Datenelement „Geburtsdatum“ im Archetyp EVALUATION.birth_summary.\r\n\r\nDarf nicht verwendet werden, um biometrische Details oder Biomarker über eine Person darzustellen – verwenden Sie zu diesem Zweck einen speziellen ENTRY-Archetyp.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "pt-pt" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "pt-pt"
+          },
+          "purpose" : "Para registar detalhes sobre uma pessoa tal como são conhecidos ou compreendidos aquando da documentação clínica.",
+          "keywords" : [ "prestador de cuidados, cuidador, funcionário, profissional de saúde, familiar, familiar mais próximo, testemunha, amigo, vizinho, criança, família, irmão, pai, indivíduo" ],
+          "use" : "Utilizado para registar detalhes de uma pessoa conforme são conhecidos ou compreendidos aquando da documentação clínica, frequentemente ad hoc ou quando não é apropriado ou possível usar um registo demográfico ou índice formal. Exemplos incluem:\r\n- o detentor da cópia de um registo de cuidados avançados, utilizando o SLOT 'Copyholder' dentro do arquétipo EVALUATION.advance_care_directive;\r\n- o papel e detalhes de contacto de uma pessoa designada dentro de uma organização, utilizando o SLOT 'Contact person' dentro do arquétipo CLUSTER.organisation;\r\n- detalhes sobre um familiar num registo de histórico familiar, utilizando o SLOT 'Family member details' dentro do arquétipo openEHR-EHR-EVALUATION.family_history;\r\n- o nome da pessoa que recolheu uma amostra laboratorial de um paciente, utilizando os 'Specimen collector details' dentro do arquétipo CLUSTER.specimen; ou\r\n- uma testemunha de uma queda ou acidente, utilizando o SLOT 'Witness' dentro do arquétipo CLUSTER.health_event.\r\n\r\nNa maioria dos casos simples de registo clínico, o elemento não estruturado 'Name' dentro do arquétipo CLUSTER.person será suficiente para registar o nome de uma pessoa como parte de um registo de saúde. No entanto, em circunstâncias em que um nome estruturado é necessário ou desejável para fins de registo clínico, incorpore este arquétipo dentro do SLOT 'Structured name' no arquétipo CLUSTER.person. Se o arquétipo CLUSTER.structured_name estiver incorporado dentro do SLOT 'Structured name', todos ou alguns dos elementos de dados podem ser combinados como uma string de texto e representados no elemento 'Name', desde que sejam consistentes.\r\n\r\nEste arquétipo também poderia ser utilizado como um proxy para dados demográficos formais ao rever um template com especialistas do domínio - por exemplo, uma avaliação onde os revisores esperariam ver os detalhes de uma pessoa no topo do formulário de avaliação.",
+          "misuse" : "Não deve ser utilizado para representar ou substituir a gestão formal de identificação ou para efeitos de manutenção de um registo ou índice demográfico oficial. Utilize um Master Patient Index formal ou Health Provider Index para este fim, ou arquétipos baseados no Demographic Information Model do openEHR.\r\n\r\nNão deve ser utilizado para representar o sujeito do cuidado, participantes ou autor do registo e elementos de dados semelhantes que devem ser representados formalmente no registo de saúde utilizando os atributos do Reference Model.\r\n\r\nNão deve ser utilizado para registar a data de nascimento de um indivíduo - utilize o elemento de dados 'Date of birth' dentro do EVALUATION.birth_summary para este fim.\r\n\r\nNão deve ser utilizado para registar detalhes biométricos ou biomarcadores sobre um indivíduo - utilize um arquétipo ENTRY específico para este fim.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "sv" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "sv"
+          },
+          "purpose" : "Används för att registrera information om en person som behöver representeras i patientjournalen.",
+          "keywords" : [ "Leverantör, vårdare, vårdgivare, personal, vårdpersonal, släkting, anhöriga, läkare, vittne, vän, granne, barn, familj, syskon, förälder, individ" ],
+          "use" : "Används för att registrera uppgifter om en person i den elektroniska journalen, när det inte är lämpligt eller möjligt att använda ett formellt demografiskt register eller index. Exempelvis:\r\n- Namn och kontaktuppgifter för en person som innehar en fysisk kopia av ett dokument om framtida behandlingsval eller behandlingsreservationer; exempelvis 'Copyholder'-attributet i arketypen EVALUATION.advance_care_directive;\r\n- Namn och kontaktuppgifter för en vårdgivare i en remiss;\r\n- Namn, roll och kontaktuppgifter för en medlem av ett vårdgivarteam;\r\n- Rollen och kontaktuppgifterna för en namngiven kontaktperson inom en organisation;\r\n- uppgifter om en släkting i en släkthistoria; eller\r\n- ett vittne till ett epileptisk anfall.\r\n\r\nI de flesta vanliga användningsfallen där ett namn måste inkluderas i en journal räcker det med fritextinmatning inom elementet 'Ostrukturerat namn'. I situationer när det krävs mer detaljerade detaljer om en eller flera namnkomponenter, använd de ytterligare strukturerade dataelementen i arketypen CLUSTER.structured_name. I denna arketyp finns en SLOT kapslade i \"Structured name\" . Om arketypen CLUSTER.structured name är kapslad i 'Structured name' SLOT, kan något eller alla av de strukturerade namnelementen sammanfogas och representeras i elementet 'Ostrukturerat namn'.\r\n\r\nDenna arketyp kan också användas som en proxy för formella demografiska data när man granskar en mall med domänexperter – till exempel en bedömning där granskare förväntar sig att se patientens uppgifter högst upp i bedömningsformuläret.",
+          "misuse" : "Får inte användas för att representera eller ersätta formell identifieringshantering eller i syfte att upprätthålla ett officiellt demografiskt register eller index. Använd ett formellt Master Patient Index eller Vårdgivare Index för detta ändamål, eller arketyper baserade på openEHR Demographic Information Model.\r\n\r\nFår inte användas för att representera patienten, deltagare eller författare till journalen och liknande dataelement som bör representeras formellt i journalen med hjälp av Referensmodellens attribut.\r\n\r\nFår inte användas för att registrera en individs födelsedatum - använd istället dataelementet \"Födelsedatum\" i EVALUATION.birth_summary för detta ändamål\r\n\r\nFår inte användas för att registrera biometriska detaljer eller biomarkörer om en individ - använd en specifik ENTRY-arketyp för detta ändamål.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "nb" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "nb"
+          },
+          "purpose" : "For å registrere detaljer om en person i en pasientjournal.",
+          "keywords" : [ "tjenesteyter, omsorgsperson, helsepersonell, slektning, pårørende, vitne, venn, nabo, barn, familie, søsken, forelder, arbeidsgiver, rekvirent, henviser, ektefelle, verge, samboer, kjæreste" ],
+          "use" : "Brukes for å registrere detaljer om en person i en pasientjournal, når det ikke er ønskelig eller mulig å bruke et formelt demografisk register eller indeks.\r\n\r\nFor eksempel:\r\n- navn og kontaktdetaljer til en person som har en kopi av et fremtidig behandlingsvalg, i SLOTet \"Kopiholder\" i arketypen EVALUATION.advance_care_directive (Fremtidig behandlingsvalg).\r\n- navn og kontaktdetaljer til en omsorgsperson eller helsepersonell i en organisasjon, i SLOTet \"Kontaktperson\" i arketypen CLUSTER.organisation (Organisasjon).\r\n- detaljer om en slektning i en familieanamnese, I SLOTet \"Detaljer om familiemedlem\" i arketypen EVALUATION.family_history (Familieanamnese).\r\n- navnet på en person som gjennomførte prøvetakning på en pasient, i SLOTet \"Detaljer om prøvetaker\" i arketypen CLUSTER.specimen (Prøvemateriale).\r\n- et vitne til et fall eller en ulykke, i SLOTet \"Witness\" i arketypen CLUSTER.health_event.\r\n\r\nI de mest vanlige brukscasene der navn skal registreres i pasientjournalen, vil dataelementet \"Navn\" i denne arketypen være tilstrekkelig. I tilfeller der det er nødvendig eller ønskelig med detaljer om en eller flere navnekomponenter, bruk arketypen CLUSTER.structured_name i SLOTet \"Strukturert navn\" i denne arketypen. \r\nOm det er gjort, kan noen eller alle de strukturerte navnelementene slås sammen av programvaren man benytter, og lagres i dataelementet \"Navn\".\r\n\r\nDenne arketypen kan også brukes som en midlertidig erstatning for formelle demografiske data når man gjennomgår et templat med domeneeksperter - for eksempel en vurdering der man i templatet forventer å se detaljer om en person på toppen av vurderingsskjema.",
+          "misuse" : "Brukes ikke til å representere eller erstatte de formelle demografiske opplysninger for formell identitetsforvaltning eller for å opprettholde et demografisk register eller en indeks. Bruk et formelt pasientregister, helsepersonellregister eller arketyper basert på openEHR demografisk informasjonsmodell til dette formålet.\r\n\r\nBrukes ikke for å representere pasient, deltakere eller forfatter av skjema eller lignende, som skal representeres formelt i pasientjournalen. Bruk attributter fra Referansemodellen for dette formålet.\r\n\r\nBrukes ikke for å registrere fødselsdato for individet - bruk dataelementet \"Fødselsdato\" i arketypen EVALUATION.birth_summary for dette formålet.\r\n\r\nBrukes ikke for å registrere detaljer om biometri eller biomarkører for personen - bruk en spesifikk ENTRY-arketype for dette formålet.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "en" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "en"
+          },
+          "purpose" : "To record details about a person as they are known or understood in the course of clinical documentation.",
+          "keywords" : [ "provider, carer, staff, healthcare professional, relative, next-of-kin, practitioner, witness, friend, neighbour, child, family, sibling, parent, individual" ],
+          "use" : "Use to record details of a person as they are known or understood in the course of clinical documentation, often ad hoc or when it is not appropriate or possible to use a formal demographic register or index. Examples include:\r\n- the copyholder of an advanced care record, using the 'Copyholder' SLOT within the EVALUATION.advance_care_directive archetype;\r\n- the role and contact details of a named contact person within an organisation, using the 'Contact person' SLOT within the CLUSTER.organisation archetype;\r\n- details about a relative in a family history record, using the 'Family member details' SLOT within the openEHR-EHR-EVALUATION.family_history archetype; \r\n- the name of the person who collected a laboratory specimen from a patient, using the 'Specimen collector details' within the CLUSTER.specimen archetype; or\r\n- a witness to a fall or accident, using the 'Witness' SLOT within the CLUSTER.health_event archetype.\r\n\r\nIn most simple clinical recording use cases, the unstructured 'Name' element within the CLUSTER.person archetype will be sufficient to record the name of a person as part of a health record. However, in circumstances where a structured name is necessary or desirable for clinical recording purposes, nest this archetype within the 'Structured name' SLOT in CLUSTER.person archetype. If the CLUSTER.structured_name archetype is nested within the 'Structured name' SLOT, any or all of the data elements can be combined together as a text string and represented in the 'Name' element, as long as they are consistent.\r\n\r\nThis archetype could also be used as a proxy for formal demographic data when reviewing a template with domain experts - for example, an assessment where reviewers would expect to see a person's details at the top of the assessment form.",
+          "misuse" : "Not to be used to represent or replace formal identification management or for the purposes of maintaining an official demographic register or index. Use a formal Master Patient Index or Health Provider Index for this purpose, or archetypes based on the openEHR Demographic Information Model.\r\n\r\nNot to be used to represent the subject of care, participants or author of the record and similar data elements that should be represented formally in the health record using the Reference Model attributes.\r\n\r\nNot to be used to record the date of birth of an individual - use the 'Date of birth' data element within the EVALUATION.birth_summary for this purpose\r\n\r\nNot to be used to record biometric detail or biomarkers about an individual - use a specific ENTRY archetype for this purpose.",
+          "copyright" : "© openEHR Foundation",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "zh" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "zh"
+          },
+          "purpose" : "*To record details about a person as they are known or understood in the course of clinical documentation. (en)",
+          "keywords" : [ "*provider, carer, staff, healthcare professional, relative, next-of-kin, practitioner, witness, friend, neighbour, child, family, sibling, parent, individual (en)" ],
+          "use" : "*Use to record details of a person as they are known or understood in the course of clinical documentation, often ad hoc or when it is not appropriate or possible to use a formal demographic register or index. Examples include:\r\n- the copyholder of an advanced care record, using the 'Copyholder' SLOT within the EVALUATION.advance_care_directive archetype;\r\n- the role and contact details of a named contact person within an organisation, using the 'Contact person' SLOT within the CLUSTER.organisation archetype;\r\n- details about a relative in a family history record, using the 'Family member details' SLOT within the openEHR-EHR-EVALUATION.family_history archetype; \r\n- the name of the person who collected a laboratory specimen from a patient, using the 'Specimen collector details' within the CLUSTER.specimen archetype; or\r\n- a witness to a fall or accident, using the 'Witness' SLOT within the CLUSTER.health_event archetype.\r\n\r\nIn most simple clinical recording use cases, the unstructured 'Name' element within the CLUSTER.person archetype will be sufficient to record the name of a person as part of a health record. However, in circumstances where a structured name is necessary or desirable for clinical recording purposes, nest this archetype within the 'Structured name' SLOT in CLUSTER.person archetype. If the CLUSTER.structured_name archetype is nested within the 'Structured name' SLOT, any or all of the data elements can be combined together as a text string and represented in the 'Name' element, as long as they are consistent.\r\n\r\nThis archetype could also be used as a proxy for formal demographic data when reviewing a template with domain experts - for example, an assessment where reviewers would expect to see a person's details at the top of the assessment form. (en)",
+          "misuse" : "*Not to be used to represent or replace formal identification management or for the purposes of maintaining an official demographic register or index. Use a formal Master Patient Index or Health Provider Index for this purpose, or archetypes based on the openEHR Demographic Information Model.\r\n\r\nNot to be used to represent the subject of care, participants or author of the record and similar data elements that should be represented formally in the health record using the Reference Model attributes.\r\n\r\nNot to be used to record the date of birth of an individual - use the 'Date of birth' data element within the EVALUATION.birth_summary for this purpose\r\n\r\nNot to be used to record biometric detail or biomarkers about an individual - use a specific ENTRY archetype for this purpose. (en)",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "es" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "es"
+          },
+          "purpose" : "Para registrar detalles sobre una persona tal y como se conocen o entienden en el curso de la documentación clínica.",
+          "keywords" : [ "proveedor, cuidador, personal, profesional sanitario, familiar, pariente cercano, profesional, testigo, amigo, vecino, niño, familia, hermano, padre, individuo" ],
+          "use" : "Utilizar para registrar los detalles de una persona tal y como se conocen o entienden en el curso de la documentación clínica, a menudo ad hoc o cuando no es apropiado o posible utilizar un registro o índice demográfico formal. Algunos ejemplos son:\r\n- El nombre y los datos de contacto de una persona que posee una copia física de un documento de voluntades anticipadas, usando el slot 'Encargado de la copia' en el arquetipo EVALUATION.advance_care_directive;\r\n- La función y los datos de una persona de contacto nombrada dentro de una organización, utilizando el SLOT \"Persona de contacto\" dentro del arquetipo CLUSTER.organisation;\r\n- Los datos de un pariente en un registro de historia familiar, utilizando el SLOT 'Family member details' dentro del arquetipo openEHR-EHR-EVALUATION.family_history;\r\n- El nombre de la persona que recogió una muestra de laboratorio de un paciente, utilizando los \"detalles del recolector de muestras\" dentro del arquetipo CLUSTER.specimen; o\r\n- Un testigo de una caída o accidente, utilizando el SLOT \"Testigo\" dentro del arquetipo CLUSTER.health_event.\r\n\r\nEn la mayoría de los casos de uso de registros clínicos sencillos, el elemento no estructurado \"Nombre\" dentro del arquetipo CLUSTER.person será suficiente para registrar el nombre de una persona como parte de un registro sanitario. Sin embargo, en circunstancias en las que sea necesario o deseable un nombre estructurado para fines de registro clínico, incluya este arquetipo dentro del SLOT 'Nombre estructurado' en el arquetipo CLUSTER.person. Si el arquetipo CLUSTER.structured_name se incluye dentro del SLOT 'Structured name', cualquiera de los elementos de datos, o todos ellos, pueden combinarse juntos como una cadena de texto y representarse en el elemento 'Nombre' siempre que sean coherentes.\r\n\r\nEste arquetipo también puede utilizarse como sustituto de los datos demográficos formales cuando se revise una plantilla con expertos del dominio - por ejemplo, una evaluación en la que los revisores esperarían ver los datos del paciente en la parte superior del formulario.",
+          "misuse" : "No debe utilizarse para representar o sustituir la gestión de la identificación formal ni para mantener un registro o índice demográfico oficial. Utilice para ello un Índice Maestro de Pacientes o un Índice de Proveedores de Salud formales o arquetipos basados en el Modelo de Información Demográfico de openEHR.\r\n\r\nNo debe utilizarse para representar el sujeto de la atención, los participantes o el autor del registro y elementos de datos similares que deberían representarse formalmente en el registro sanitario utilizando los atributos del Modelo de Referencia.\r\n\r\nNo debe utilizarse para registrar la fecha de nacimiento de un individuo: utilice el elemento de datos \"Fecha de nacimiento\" dentro de EVALUATION.birth_summary para este fin\r\n\r\nNo debe utilizarse para registrar detalles biométricos o biomarcadores sobre un individuo - utilice un arquetipo de ENTRY específico para este fin.\r\n",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        }
+      }
     },
     "parentArchetypeId" : "openEHR-EHR-CLUSTER.person.v1",
     "differential" : true,
@@ -638,7 +793,66 @@
       "otherDetails" : {
         "PARENT:MD5-CAM-1.0.1" : "7229DFAFA43B2D9ABD13B0228E2F0181"
       },
-      "details" : { }
+      "details" : {
+        "de" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "de"
+          },
+          "purpose" : "Zur Statusdarstellung einer Anforderung oder Aufzeichnung der Einwilligungserklärung vor der Durchführung einer Prozedur, einer klinischen Studie/Prüfung oder einer Aktivität im Zusammenhang mit dem Gesundheitswesen.",
+          "keywords" : [ "Einwilligung", "Einverständnis", "Einverständniserklärung", "Aufklärung", "Zustimmung", "informiert", "Vorbehalt" ],
+          "use" : "Zur Statusdarstellung einer Anforderung, um eine Einverständniserklärung zu erhalten, einschließlich was geplant, angefordert, bereitgestellt oder zurückgezogen wurde.\r\n\r\nDieser Archetyp wurde als Framework entwickelt, das zum Anfordern und Aufzeichnen einer einfachen Einwilligung geeignet ist, es jedoch zulässt, dass zusätzliche Details optional im SLOT \"Details\" hinzugefügt werden, um die spezifischen Anforderungen eines komplexeren klinischen Szenarios zu erfüllen. Beispielsweise können zusätzliche Zustimmungsdetails unter Verwendung des Archetyps CLUSTER.consent_details eingefügt werden. Andere Archetypen können entwickelt und optional im selben SLOT enthalten sein, um spezifische Details über das Verfahren, den Versuch oder die Aktivität aufzuzeichnen.\r\n\r\nDer Status der Einwilligungserklärung spiegelt sich in den einzelnen Schritten wider - angefordert, abgelehnt, bereitgestellt, zurückgezogen usw.\r\n",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "ru" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "ru"
+          },
+          "purpose" : "Записать необходимость или наличие информированного согласия на выполнение процедуры, клинического теста или другой связанной со сдоровьем активности",
+          "keywords" : [ "согласие", "информированное", "отказ" ],
+          "use" : "Используется для записи статуса информированного согласия, включая планируемое, назначенное, запрошенное, предложенное, полученное. \r\nЭтот архетип разработан как рабочая зона, достаточная для того, чтобы  запросить и записать простое согласие, но, в то же время, позволяющая добавить специфические детали в слоте \"Детали\" при  необходимости более сложного клинического сценария. Например, такие детали могут содержать архетип КЛАСТЕР.детали_согласия. В этот же слот могут быть добавлены другие архетипы для описания процедуры, исследования или активности.\r\nСтатус информированного согласия отражает этапы его получения: необходимость, запрос, отказ, подписание и т.д.       ",
+          "copyright" : "© openEHR Foundation",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "nb" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "nb"
+          },
+          "purpose" : "For å registrere informert samtykke eller status på en forespørsel om informert samtykke før en prosedyre, klinisk utprøving eller helserelatert aktivitet utføres.",
+          "keywords" : [ "samtykke", "informert", "cave" ],
+          "use" : "Brukes for å registrere status på forespørsel om informert samtykke, inkludert hva som er planlagt, forespurt, avgitt eller tilbaketrukket.\r\n\r\nDenne arketypen er utformet for å være et rammeverk som vil være tilstrekkelig for å be om og registrere et enkelt samtykke, men tillater også registrering av ytterligere detaljer i \"Detaljer\"-SLOTet for å møte de spesifikke kravene til et mer komplekst klinisk scenario. For eksempel kan ytterligere detaljer inkluderes ved å bruke arketypen CLUSTER.consent_details. Andre arketyper kan utvikles og eventuelt inkluderes i det samme SLOTet med formålet om å registrere spesifikke detaljer om prosedyren, utprøvingen eller aktiviteten.\r\n\r\nStatus til det informerte samtykket reflekteres av prosesstrinnene - forespurt, avslått, avgitt, tilbaketrukket.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "en" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "en"
+          },
+          "purpose" : "To record the status of a request for, or record of, informed consent prior to performing a procedure, clinical trial or healthcare-related activity.",
+          "keywords" : [ "consent", "informed", "caveat" ],
+          "use" : "Use to record the status of an order to obtain informed consent, including what is planned, scheduled, requested, provided, or withdrawn.\r\n\r\nThis archetype has been designed to be a framework that will be adequate for requesting and recording a simple consent, but allow for additional details to be optionally added within the 'Details' SLOT to meet the specific requirements of a more complex clinical scenario.  For example, additional consent details can be included using the CLUSTER.consent_details archetype. Other archetypes can be developed and optionally included in the same SLOT for the purpose of recording specific details about the procedure, trial or activity. \r\n\r\nThe status of the informed consent is reflected by the pathway steps - requested, refused, provided, withdrawn etc.",
+          "copyright" : "© openEHR Foundation",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        }
+      }
     },
     "parentArchetypeId" : "openEHR-EHR-ACTION.informed_consent.v0",
     "differential" : true,
@@ -767,7 +981,88 @@
       "otherDetails" : {
         "PARENT:MD5-CAM-1.0.1" : "485945C793875A489010B7C1DAD52D7F"
       },
-      "details" : { }
+      "details" : {
+        "fi" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "fi"
+          },
+          "purpose" : "Tallentaa yksityiskohtaisia tietoja henkilön kommunikaatiokyvystä sekä kommunikointiin liittyvistä haasteista ja tuen tarpeista.",
+          "keywords" : [ "kieli", "tulkki", "käännös", "kääntäjä" ],
+          "use" : "Hyödynnetään henkilön kommunikaatiokykyyn liittyvien yksityiskohtaisten tietojen tallentamiseen sisältäen tiedot kommunikointiin liittyvistä haasteista ja tuen tarpeista.\r\n\r\nArkkityypin tarkoituksena on tallentaa tietoa siitä, miten henkilö kommunikoi muiden kanssa ja miten terveydenhuollon palveluntarjoajat voivat parhaiten kommunikoida hänen kanssaan.",
+          "misuse" : "Ei tule käyttää kieleen liittyvien tietojen tallentamiseen. Siihen tarkoitukseen käytetään CLUSTER.language -arkkityyppiä. \r\n \r\nEi tule käyttää tulkkipalvelupyyntöjä koskien tietojen tallentamiseen. Siihen tarkoitukseen käytetään CLUSTER.interpreter_request-arkkityyppiä ja sopivaa INSTRUCTION-arkkityyppiä, kuten INSTRUCTION.service_request. \r\n \r\nEi tule käyttää suoritetun tulkkauksen tietojen tallentamiseen.",
+          "copyright" : "*© openEHR Foundation, openEHR Norway (en)",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "sv" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "sv"
+          },
+          "purpose" : "Att registrera detaljer om en individs praktiska förmåga att kommunicera, inklusive försämringar och behov av kommunikationshjälpmedel.",
+          "keywords" : [ "språk", "tolk", "översättning", "översättare", "translator", "kommunicera" ],
+          "use" : "Används för att registrera detaljer om en individs praktiska förmåga att kommunicera, inklusive försämringar och behov av kommunikationshjälpmedel.\r\n\r\nDenna arketyp är avsedd att uppfånga hur en individ kommunicerar med andra och hur vårdgivare bäst kan kommunicera med en individ.",
+          "misuse" : "*Not to be used to record details about a language - use CLUSTER.language for this purpose.\r\n\r\nNot to be used to record details about a request for interpreter services - use CLUSTER.Interpreter_request with a suitable INSTRUCTION archetype, for example INSTRUCTION.service_request.\r\n\r\nNot to be used to record details about an interpretation that was performed - use the proposed ACTION.interpretation. (en)",
+          "copyright" : "*© openEHR Foundation, openEHR Norway (en)",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "nb" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "nb"
+          },
+          "purpose" : "For å registrere detaljer om individets praktiske evne til å kommunisere, inkludert funksjonsnedsettelser og behov for kommunikasjonshjelpemidler.",
+          "keywords" : [ "språk", "tolk", "oversettelse", "oversetter", "kommunikasjon", "informasjonsutveksling", "formidle", "videreformidle", "tilpasset kommunikasjon", "tilrettelagt kommunikasjon", "samtale", "translatør", "språkassistent", "ytring", "verbal", "nonverbal", "dialog" ],
+          "use" : "Brukes for å registrere detaljer om individets praktiske evne til å kommunisere, inkludert funksjonsnedsettelser og behov for kommunikasjonshjelpemidler.\r\n\r\nHensikten med arketypen er å registrere hvordan individet kommuniserer med andre og hvordan klinikere best kan kommunisere med individet.",
+          "misuse" : "Brukes ikke for å registrere detaljer om et språk, bruk arketypen CLUSTER.language (Språk) for dette formålet.\r\n\r\nBrukes ikke for å registrere detaljer om en forespørsel om tolketjenester. Bruk arketypen CLUSTER.interpreter_request (Tolkebehov) i en egnet INSTRUCTION-arketype, for eksempel INSTRUCTION.service_request (Helsetjenesteforespørsel).\r\n\r\nBrukes ikke for å registrere detaljer om tolking som er gjennomført. Bruk arketypen ACTION.interpretation for dette formålet.",
+          "copyright" : "*© openEHR Foundation, openEHR Norway (en)",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "en" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "en"
+          },
+          "purpose" : "To record details about the practical ability of an individual to communicate, including impairments and need for communication aids.",
+          "keywords" : [ "language", "interpreter", "translation", "translater", "translator" ],
+          "use" : "Use to record details about the practical ability of an individual to communicate, including impairments and need for communication aids.\r\n\r\nThis archetype is intended to capture how an individual communicates with others and how healthcare providers can best communicate with an individual.",
+          "misuse" : "Not to be used to record details about a language - use CLUSTER.language for this purpose.\r\n\r\nNot to be used to record details about a request for interpreter services - use CLUSTER.Interpreter_request with a suitable INSTRUCTION archetype, for example INSTRUCTION.service_request.\r\n\r\nNot to be used to record details about an interpretation that was performed - use the proposed ACTION.interpretation.",
+          "copyright" : "© openEHR Foundation, openEHR Norway",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "es" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "es"
+          },
+          "purpose" : "Registrar detalles sobre la capacidad práctica de una persona para comunicarse, incluidas las deficiencias y la necesidad de apoyo a la comunicación.",
+          "keywords" : [ "idioma", "intérprete", "traducción", "traductor" ],
+          "use" : "Se utiliza para registrar detalles sobre la capacidad práctica de una persona para comunicarse, incluidas las deficiencias y la necesidad de apoyo a la comunicación.\r\n\r\nEste arquetipo pretende captar cómo se comunica un individuo con los demás y cómo pueden comunicarse mejor con él los profesionales sanitarios.",
+          "misuse" : "*Not to be used to record details about a language - use CLUSTER.language for this purpose.\r\n\r\nNot to be used to record details about a request for interpreter services - use CLUSTER.Interpreter_request with a suitable INSTRUCTION archetype, for example INSTRUCTION.service_request.\r\n\r\nNot to be used to record details about an interpretation that was performed - use the proposed ACTION.interpretation. (en)",
+          "copyright" : "*© openEHR Foundation, openEHR Norway (en)",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        }
+      }
     },
     "parentArchetypeId" : "openEHR-EHR-EVALUATION.communication_capability.v1",
     "differential" : true,
@@ -795,19 +1090,6 @@
               "nodeId" : "at0015.1",
               "attributes" : [ {
                 "@type" : "C_ATTRIBUTE",
-                "rmAttributeName" : "items",
-                "children" : [ {
-                  "@type" : "C_ARCHETYPE_ROOT",
-                  "rmTypeName" : "CLUSTER",
-                  "occurrences" : "0..1",
-                  "nodeId" : "at0003.1",
-                  "attributes" : [ ],
-                  "attributeTuples" : [ ],
-                  "archetypeRef" : "openEHR-EHR-CLUSTER.ovl-language-001.v1",
-                  "referenceType" : "archetypeOverlay"
-                } ]
-              }, {
-                "@type" : "C_ATTRIBUTE",
                 "rmAttributeName" : "name",
                 "children" : [ {
                   "@type" : "C_COMPLEX_OBJECT",
@@ -827,6 +1109,19 @@
                     } ]
                   } ],
                   "attributeTuples" : [ ]
+                } ]
+              }, {
+                "@type" : "C_ATTRIBUTE",
+                "rmAttributeName" : "items",
+                "children" : [ {
+                  "@type" : "C_ARCHETYPE_ROOT",
+                  "rmTypeName" : "CLUSTER",
+                  "occurrences" : "0..1",
+                  "nodeId" : "at0003.1",
+                  "attributes" : [ ],
+                  "attributeTuples" : [ ],
+                  "archetypeRef" : "openEHR-EHR-CLUSTER.ovl-language-001.v1",
+                  "referenceType" : "archetypeOverlay"
                 } ]
               } ],
               "attributeTuples" : [ ]
@@ -1021,7 +1316,103 @@
       "otherDetails" : {
         "PARENT:MD5-CAM-1.0.1" : "D2CBD6F2B74ECBFE8CBE434D7A1F29B7"
       },
-      "details" : { }
+      "details" : {
+        "de" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "de"
+          },
+          "purpose" : "Zur Darstellung von Details über ein mündliches, schriftliches oder symbolisches Mitteilungsverfahren.",
+          "keywords" : [ "Unterzeichnung", "Zeichensprache", "Sprache", "Signatur", "Lautsprecher", "mündlich", "schriftlich", "Kompetenz", "Sprechen", "Übersetzen", "interpretieren" ],
+          "use" : "Der Archetyp wird verwendet, um Details über ein mündliches, schriftliches oder symbolisches Mitteilungsverfahren darzustellenn. Der Kontext der Angaben zur Sprache wird durch die übergeordneten Archetypen bereitgestellt, in denen dieser Archetyp verschachtelt ist. Zum Beispiel:\r\n- um die primäre oder bevorzugte Sprache eines Patienten zu erfassen, verwenden Sie diesen Archetyp im Kontext von CLUSTER.communication;\r\n- um die bevorzugte oder erforderliche Sprache als Teil einer Dolmetscheranfrage zu erfassen, verwenden Sie CLUSTER.interpreter_requirements;\r\n- um die von einem Dolmetscher im Rahmen einer klinischen Konsultation verwendete Sprache darzustellen, verwenden Sie diesen Archetyp innerhalb von ACTION.interpretation.\r\n\r\nVerwenden Sie eine separate Instanz dieses Archetyps, um jede Sprache darzustellen, wenn mehrere Sprachen darzustellen werden müssen, z. B. Norwegisch und Suaheli.",
+          "misuse" : "Der Archetyp darf nicht zur Darstellung von Fähigkeiten und Mitteln zum Austausch von Informationen mit einer Einzelperson verwendet werden – verwenden Sie CLUSTER.communication für diesen Zweck.\r\n\r\nDarf nicht verwendet werden, um Details zu einer Anfrage für Dolmetscherdienste darzustellen – verwenden Sie CLUSTER.interpreter_requirements mit einem geeigneten INSTRUCTION-Archetyp, zum Beispiel INSTRUCTION.service_request.\r\n\r\nDarf nicht verwendet werden, um Details zu einer durchgeführten Interpretation darzustellen – verwenden Sie die vorgeschlagene ACTION.interpretation",
+          "copyright" : "© openEHR Norway, openEHR Foundation",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "pt-pt" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "pt-pt"
+          },
+          "purpose" : "Registar pormenores sobre um sistema de comunicação falado, escrito ou simbólico.",
+          "keywords" : [ "sinalizar", "língua gestual", "língua", "sinais", "falante", "falado", "falada", "escrito", "proficiência", "discurso", "traduzir", "interpretar" ],
+          "use" : "Utilize para registar detalhes sobre um sistema de comunicação falado, escrito ou simbólico. O contexto dos detalhes linguísticos é fornecido pelos arquétipos \"pais\" nos quais este arquétipo está encaixado. Por exemplo:\r\n- para registar a idioma/língua primária ou preferida de um paciente, utilize este arquétipo no \"contexto\" do CLUSTER.communication;\r\n- para registar o idioma/língua preferida ou requerida como parte de um pedido de intérprete, utilize CLUSTER.interpreter_requirements;\r\n- para registar o idioma/língua utilizada por um intérprete no contexto de uma consulta clínica, utilize este arquétipo dentro de ACTION.interpretation.\r\n\r\nUtilize uma instância separada deste arquétipo para registar cada língua no caso de ser necessário registar várias línguas, por exemplo, norueguês e swahili.",
+          "misuse" : "Não deve ser utilizado para registar a capacidade e os meios de troca de informações com um indivíduo - utilize o CLUSTER.communication para este fim.\r\n\r\nNão deve ser utilizado para registar detalhes sobre um pedido de serviços de intérprete - utilize CLUSTER.Interpreter_requirements com um arquétipo \"INSTRUCTION\" adequado, por exemplo INSTRUCTION.service_request.\r\n\r\nNão deve ser utilizado para registar detalhes sobre uma interpretação que foi realizada - utilize ACTION.interpretation.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "fi" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "fi"
+          },
+          "purpose" : "Puhutun, kirjoitetun tai symbolisen viestintätavan yksityiskohtien tallentamiseen.",
+          "keywords" : [ "viittominen", "viittomakieli", "viitottu kieli", "kieli", "merkki", "puhuja", "puhuttu", "kirjoitettu", "taito", "puhe", "kääntää", "tulkata", "tulkkaus" ],
+          "use" : "Käytetään yksityiskohtien tallentamiseen puhutusta, kirjoitetusta tai symbolisesta viestintätavasta. Kielen yksityiskohtien asiayhteys sisältyy pääarkkityyppiin, jonka sisällä tätä CLUSTER-arkkityyppiä käytetään. Esimerkiksi jos tarkoituksena on tallentaa tietoja: \r\n- potilaan ensisijaisesta kielestä, käytetään tätä arkkityyppiä CLUSTER.communication_capability-arkkityypin yhteydessä; \r\n- suositellusta tai vaaditusta kielestä tulkkipyynnön yhteydessä, käytetään pääarkkityyppinä CLUSTER.interpreter_request-arkkityyppiä.\r\n\r\nKäytä jokaisesta kielestä erillistä instanssia, jos tallennettavana on useita kieliä, esimerkiksi norja ja swahili.",
+          "misuse" : "Ei tule hyödyntää tarkoitukseen, jossa tallennetaan tietoja kyvykkyydestä ja keinoista kommunikoida yksilön kanssa. Käytä tällaiseen tarkoitukseen CLUSTER.communication_capability-arkkityyppiä.\r\n\r\nEi tule käyttää tietojen tallentamiseen liittyen tulkkauspalvelupyyntöihin. Sen sijaan käytä CLUSTER.interpreter_request-arkkityyppiä ja tarkoitukseen sopivaa INSTRUCTION-arkkityyppiä kuten INSTRUCTION.service_request.\r\n\r\nEi tule käyttää suoritetun tulkkauksen tietojen tallentamiseen.",
+          "copyright" : "© openEHR Norway, openEHR Foundation",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "nb" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "nb"
+          },
+          "purpose" : "For å registrere detaljer om muntlig (tale, tegnspråk) eller skriftlig kommunikasjon.",
+          "keywords" : [ "tegn", "tegnspråk", "tale", "morsmål", "språk", "språkbruk", "dialekt", "taktil", "blindeskrift", "skrift", "målføre", "målform", "skriftspråk", "skriftlig" ],
+          "use" : "For å registrere detaljer om muntlig (tale, tegnspråk) eller skriftlig kommunikasjon. Den overordnede arketypen som denne arketypen nøstes i bestemmer konteksten for registreringen av språket. For eksempel:\r\n- For å registrere et individs primære eller foretrukne språk, bruk denne arketypen i arketypen CLUSTER.communication (Kommunikasjon).\r\n- For å registrere foretrukket eller påkrevd språk som en del av en forespørsel om tolk, bruk denne arketypen i arketypen CLUSTER.interpreter_requirements (Tolkebehov).\r\n- For å registrere språket som ble benyttet av en tolk under en klinisk konsultasjon, bruk denne arketypen i arketypen ACTION.interpretation.\r\n\r\nDersom det er behov for å registrere flere språk - for eksempel norsk og swahili, må arketypen gjentas for hvert språk.",
+          "misuse" : "Brukes ikke for å registrere evne og metoder for utveksling av informasjon med et individ. Bruk arketypen CLUSTER.communication (Kommunikasjon) for dette formålet.\r\n\r\nBrukes ikke for å registrere en forespørsel om tolketjenester. Bruk arketypen CLUSTER.interpreter_requirements (Tolkebehov) sammen med en passende INSTRUCTION-arketype, for eksempel INSTRUCTION.service_request (Helsetjenesteforespørsel).\r\n\r\nBrukes ikke for å registrere detaljer om en tolking som er gjennomført. Bruk arketypen ACTION.interpretation for dette formålet.",
+          "copyright" : "© openEHR Norway, openEHR Foundation",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "en" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "en"
+          },
+          "purpose" : "To record details about a spoken, written or symbolic system of communication.",
+          "keywords" : [ "signing", "sign language", "tongue", "sign", "speaker", "spoken", "written", "proficiency", "speech", "translate", "interpret" ],
+          "use" : "Use to record details about a spoken, written or symbolic system of communication. The context of the language details is provided by the parent archetypes within which this archetype is nested. For example:\r\n- to record a patient's primary or preferred language, use this archetype within the context of CLUSTER.communication;\r\n- to record the preferred or required language as part of a request for an interpreter, use CLUSTER.interpreter_requirements;\r\n- to record the language used by an interpreter within the context of a clinical consultation, use this archetype within ACTION.interpretation.\r\n\r\nUse a separate instance of this archetype to record each language in the situation where multiple languages need to be recorded, for example Norwegian and Swahili.",
+          "misuse" : "Not to be used to record capability and means for exchanging information with an individual - use CLUSTER.communication for this purpose.\r\n\r\nNot to be used to record details about a request for interpreter services - use CLUSTER.Interpreter_requirements with a suitable INSTRUCTION archetype, for example INSTRUCTION.service_request.\r\n\r\nNot to be used to record details about an interpretation that was performed - use the proposed ACTION.interpretation.",
+          "copyright" : "© openEHR Norway, openEHR Foundation",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "zh-cn" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "zh-cn"
+          },
+          "purpose" : "用于记录关于口头类、书面类或符号类（手势语类；手语类）沟通交流体系的详情。",
+          "keywords" : [ "手势语", "使用手势语", "打手势语", "手语", "使用手语", "打手语", "符号语言", "使用符号语言", "说话方式", "语言", "手势", "符号", "说话者", "口语", "口头", "口头语", "口头语言", "书面", "书面语", "书面语言", "精通", "熟练程度", "精通程度", "讲话", "说话能力", "言语", "翻译", "书面翻译", "口头翻译", "口译" ],
+          "use" : "用于记录关于口头类、书面类或符号类（手势语类；手语类）沟通交流体系的详情。语言详情的语境由其中嵌套此原始型的父原始型提供。 例如：\r\n - 用于记录患者的主要语言（第一语言；母语）或首选语言，且应当在沟通交流簇群CLUSTER.communication的语境下使用此原始型；\r\n - 用于将首选语言或所要求的语言作为关于口译工作者（口译员；口译译员； 传译员）的请求（申请）的组成部分加以记录，且应当采用口译工作者需求簇群CLUSTER.interpreter_requirements；\r\n - 用于在临床就诊/咨询/会诊的语境下记录口译工作者所使用的语言，且应当在口译行动ACTION.interpretation当中使用此原始型。\r\n\r\n在需要记录多种语言的情况下，应当采用此原始型的单独实例来分别记录每种语言，如挪威语和斯瓦希里语。",
+          "misuse" : "不得用于记录与个人交换信息的能力和手段/方法；对于此种目的，则请采用沟通交流簇群CLUSTER.communication。\r\n\r\n不用于记录关于口译工作者服务请求（申请）的详情；对于此种目的，则请采用具有合适的指令原始型INSTRUCTION的口译工作者需求簇群CLUSTER.Interpreter_requirements，如服务请求（服务申请；服务项目请求）指令原始型INSTRUCTION.service_request。\r\n\r\n不得用于记录关于已经完成的口译服务的详情；对于此种目的，则请采用所建议的口译行动原始型ACTION.interpretation。",
+          "copyright" : "© openEHR Norway, openEHR Foundation",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        }
+      }
     },
     "parentArchetypeId" : "openEHR-EHR-CLUSTER.language.v1",
     "differential" : true,
@@ -1151,7 +1542,68 @@
       "otherDetails" : {
         "PARENT:MD5-CAM-1.0.1" : "8E32DE7A251179A066A1338FCEB06E43"
       },
-      "details" : { }
+      "details" : {
+        "de" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "de"
+          },
+          "purpose" : "Zur Darstellung von Informationen über eine bestimmte Art der elektronischen Kommunikation, wie sie bekannt ist oder im Rahmen der klinischen Dokumentation verstanden wird.",
+          "keywords" : [ "Telefon, Mobiltelefon, E-Mail, Fax, Pager, Chat, Soziale Medien, asynchron, Kommunikation, SoMe" ],
+          "use" : "Zur Darstellung von Informationen über eine bestimmte Art der elektronischen Kommunikation für eine Person oder Organisation, wie sie bekannt ist oder im Rahmen der klinischen Dokumentation verstanden wird. Dies geschieht üblicherweise ad hoc oder wenn es nicht angemessen oder möglich ist, ein formelles Register oder einen Index zu verwenden.",
+          "misuse" : "Nicht für komplexe Kommunikationsdarstellung oder -verwaltung zu verwenden, wie z. B. bevorzugte Telefonnummern oder Gültigkeit der Nutzung. Verwenden Sie zu diesem Zweck einen formellen Master Patient Index oder Health Provider Index oder Archetypen, die auf dem demografischen Informationsmodell von openEHR basieren.\r\n\r\nDarf nicht verwendet werden, um das formelle Identifikationsmanagement darzustellen oder zu ersetzen oder um ein offizielles demografisches Register oder einen Index zu führen. Verwenden Sie zu diesem Zweck einen formellen Master Patient Index oder Health Provider Index oder Archetypen, die auf dem openEHR Demographic Information Model basieren.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "pt-pt" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "pt-pt"
+          },
+          "purpose" : "Registar detalhes sobre um tipo específico de comunicação eletrónica tal como é conhecido ou compreendido no decurso da documentação clínica.",
+          "keywords" : [ "telefone, telemóvel, e-mail, fax, pager, chat, redes sociais, assíncrono, comunicação" ],
+          "use" : "Utilize para registar detalhes sobre um tipo específico de comunicação eletrónica de um indivíduo ou organização, tal como é conhecido ou compreendido no decurso da documentação clínica. Isto é normalmente ad hoc ou quando não é apropriado ou possível utilizar um registo ou índice formal.",
+          "misuse" : "Não deve ser utilizado para representação ou gestão de comunicações complexas, tais como números de telefone preferenciais ou datas válidas de utilização. Utilize um Índice Mestre de Doentes ou um Índice de Prestadores de Cuidados de Saúde formal para esta finalidade, ou arquétipos baseados no Modelo de Informação Demográfica openEHR.\r\n\r\nNão deve ser utilizado para representar ou substituir a gestão formal de identificação ou para efeitos de manutenção de um registo ou índice demográfico oficial. Utilize um Índice Mestre de Doentes ou um Índice de Prestadores de Cuidados de Saúde formal para esta finalidade, ou arquétipos baseados no Modelo de Informação Demográfica openEHR.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "nb" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "nb"
+          },
+          "purpose" : "For å registrere detaljer om en spesifikk type elektronisk kommunikasjon som man har informasjon om eller har forstått, i det kliniske dokumentasjonsarbeidet.",
+          "keywords" : [ "telefon, mobil, e-post, faks, personsøker, chat, asynkron dialog, sosiale media, kommunikasjon, SoMe," ],
+          "use" : "Brukes for å registrere detaljer om en spesifikk type elektronisk kommunikasjon for en person eller en organisasjon, som man har informasjon om eller har forstått, i det kliniske dokumentasjonsarbeidet. Brukes ofte ad hoc eller i de tilfeller når det ikke er ønskelig eller mulig å bruke et formelt demografisk register eller indeks.",
+          "misuse" : "Brukes ikke til kompleks kommunikasjonsadministrasjon, for eksempel foretrukne telefonnummer eller gyldige bruksdatoer. Bruk et formelt pasientregister, helsepersonellregister eller arketyper basert på openEHR demografisk informasjonsmodell til dette formålet.\r\n\t\r\nBrukes ikke til å representere eller erstatte de formelle demografiske opplysninger for formell identitetsforvaltning eller for å opprettholde et demografisk register eller en indeks. Bruk et formelt pasientregister, helsepersonellregister eller arketyper basert på openEHR demografisk informasjonsmodell til dette formålet.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        },
+        "en" : {
+          "@type" : "RESOURCE_DESCRIPTION_ITEM",
+          "language" : {
+            "terminologyId" : {
+              "value" : "ISO_639-1"
+            },
+            "codeString" : "en"
+          },
+          "purpose" : "To record details about a specified type of electronic communication as it is known or understood in the course of clinical documentation.",
+          "keywords" : [ "telephone, phone, mobile, email, fax, pager, chat, social media, asynchronous, communication, SoMe" ],
+          "use" : "Use to record details about a specified type of electronic communication for an individual or an organisation as it is known or understood in the course of clinical documentation. This is commonly ad hoc or when it is not appropriate or possible to use a formal register or index.",
+          "misuse" : "Not to be used for complex communication representation or management, such as preferred phone numbers or valid dates of usage. Use a formal Master Patient Index or Health Provider Index for this purpose, or archetypes based on the openEHR Demographic Information Model.\r\n\r\nNot to be used to represent or replace formal identification management or for the purposes of maintaining an official demographic register or index. Use a formal Master Patient Index or Health Provider Index for this purpose, or archetypes based on the openEHR Demographic Information Model.",
+          "originalResourceUri" : { },
+          "otherDetails" : { }
+        }
+      }
     },
     "parentArchetypeId" : "openEHR-EHR-CLUSTER.electronic_communication.v1",
     "differential" : true,
@@ -1231,6 +1683,171 @@
         "name" : "Kanika Kuwelker, John Tore Valand, Liv Laugen",
         "organisation" : "Helse Vest IKT, Helse Bergen, ​Oslo University Hospital, Norway",
         "email" : "kanika.kuwelker@helse-vest-ikt.no, john.tore.valand@helse-vest-ikt.no, liv.laugen@ous-hf.no"
+      },
+      "otherDetails" : { }
+    } ]
+  }, {
+    "@type" : "TEMPLATE_OVERLAY",
+    "uid" : "e5dece03-1115-444f-840e-390ea6cf35d2",
+    "description" : {
+      "@type" : "RESOURCE_DESCRIPTION",
+      "originalAuthor" : { },
+      "otherContributors" : [ ],
+      "ipAcknowledgements" : { },
+      "references" : { },
+      "conversionDetails" : { },
+      "otherDetails" : {
+        "PARENT:MD5-CAM-1.0.1" : "4de131ee06cdacb4630b076f5fd48305"
+      },
+      "details" : { }
+    },
+    "parentArchetypeId" : "openEHR-EHR-CLUSTER.research_information.v0",
+    "differential" : true,
+    "archetypeId" : {
+      "@type" : "ARCHETYPE_HRID",
+      "value" : "openEHR-EHR-CLUSTER.ovl-research_information-001.v0"
+    },
+    "definition" : {
+      "@type" : "C_COMPLEX_OBJECT",
+      "rmTypeName" : "CLUSTER",
+      "nodeId" : "at0000.1",
+      "attributes" : [ ],
+      "attributeTuples" : [ ]
+    },
+    "terminology" : {
+      "@type" : "ARCHETYPE_TERMINOLOGY",
+      "conceptCode" : "at0000",
+      "termDefinitions" : {
+        "en" : { },
+        "fr" : { }
+      },
+      "termBindings" : { },
+      "terminologyExtracts" : { },
+      "valueSets" : { }
+    },
+    "adlVersion" : "1.4",
+    "buildUid" : "e7a889a7-c53d-35a5-b5cf-d4649b58920a",
+    "rmName" : "openehr",
+    "rmRelease" : "1.1.0",
+    "generated" : true,
+    "otherMetaData" : { },
+    "originalLanguage" : {
+      "terminologyId" : {
+        "value" : "ISO_639-1"
+      },
+      "codeString" : "en"
+    },
+    "translations" : [ {
+      "@type" : "TRANSLATION_DETAILS",
+      "language" : {
+        "terminologyId" : {
+          "value" : "ISO_639-1"
+        },
+        "codeString" : "fr"
+      },
+      "author" : {
+        "name" : "Bassem Khouzam"
+      },
+      "otherDetails" : { }
+    } ]
+  }, {
+    "@type" : "TEMPLATE_OVERLAY",
+    "uid" : "2ace4848-bc85-434c-98ad-dde128e97c7e",
+    "description" : {
+      "@type" : "RESOURCE_DESCRIPTION",
+      "originalAuthor" : { },
+      "otherContributors" : [ ],
+      "ipAcknowledgements" : { },
+      "references" : { },
+      "conversionDetails" : { },
+      "otherDetails" : {
+        "PARENT:MD5-CAM-1.0.1" : "c5faee9ad0bf20246c80d7b1a38719f9"
+      },
+      "details" : { }
+    },
+    "annotations" : {
+      "@type" : "RESOURCE_ANNOTATIONS",
+      "documentation" : {
+        "en" : {
+          "/items[at0002]" : {
+            "FHIR_mapping" : "Encounter.identifier",
+            "HL7v2_mapping" : "PV1.19 "
+          },
+          "/items[at0001]" : {
+            "FHIR_mapping" : "Appointment.identifier",
+            "HL7v2_mapping" : "SCH-1 / SCH-2"
+          },
+          "/items[at0004]" : {
+            "FHIR_mapping" : "Encounter.reason",
+            "HL7v2_mapping" : "EVN.4 / PV2.3"
+          },
+          "/items[at0003]" : {
+            "FHIR_mapping" : "Encounter.type",
+            "HL7v2_mapping" : " PV1.4 / PV1.18"
+          }
+        },
+        "pt-pt" : { },
+        "fr" : { }
+      }
+    },
+    "parentArchetypeId" : "openEHR-EHR-CLUSTER.encounter_context.v0",
+    "differential" : true,
+    "archetypeId" : {
+      "@type" : "ARCHETYPE_HRID",
+      "value" : "openEHR-EHR-CLUSTER.ovl-encounter_context-001.v0"
+    },
+    "definition" : {
+      "@type" : "C_COMPLEX_OBJECT",
+      "rmTypeName" : "CLUSTER",
+      "nodeId" : "at0000.1",
+      "attributes" : [ ],
+      "attributeTuples" : [ ]
+    },
+    "terminology" : {
+      "@type" : "ARCHETYPE_TERMINOLOGY",
+      "conceptCode" : "at0000",
+      "termDefinitions" : {
+        "en" : { },
+        "pt-pt" : { },
+        "fr" : { }
+      },
+      "termBindings" : { },
+      "terminologyExtracts" : { },
+      "valueSets" : { }
+    },
+    "adlVersion" : "1.4",
+    "buildUid" : "7c4e5b92-2c96-4cbb-b575-22126d197b29",
+    "rmName" : "openehr",
+    "rmRelease" : "1.1.0",
+    "generated" : true,
+    "otherMetaData" : { },
+    "originalLanguage" : {
+      "terminologyId" : {
+        "value" : "ISO_639-1"
+      },
+      "codeString" : "en"
+    },
+    "translations" : [ {
+      "@type" : "TRANSLATION_DETAILS",
+      "language" : {
+        "terminologyId" : {
+          "value" : "ISO_639-1"
+        },
+        "codeString" : "pt-pt"
+      },
+      "author" : { },
+      "otherDetails" : { }
+    }, {
+      "@type" : "TRANSLATION_DETAILS",
+      "language" : {
+        "terminologyId" : {
+          "value" : "ISO_639-1"
+        },
+        "codeString" : "fr"
+      },
+      "author" : {
+        "name" : "Bassem Khouzam",
+        "email" : "bassem.khouzam@medtronic.com"
       },
       "otherDetails" : { }
     } ]
